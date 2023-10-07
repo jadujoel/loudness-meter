@@ -1,4 +1,4 @@
-import { LoudnessMeter } from './needles';
+import { LoudnessMeter } from './needles.js';
 
 const context = new AudioContext();
 const bufferPromise = load('music.mp4');

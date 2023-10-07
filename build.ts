@@ -9,4 +9,8 @@ Bun.build({
   plugins: [
     copy('static/', 'dist')
   ],
+}).then(output => {
+  if (!output.success) {
+    output.logs.map(console.log)
+  }
 })
