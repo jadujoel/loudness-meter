@@ -320,7 +320,7 @@ class Processor {
 
     const map = {
       'momentary': this._createMomentaryMeter,
-      'short-term': this._createShortTermMeter,
+      'short_term': this._createShortTermMeter,
       'integrated': this._createIntegratedMeter,
     };
     this._meters = this.modes.map(mode => map[mode].call(this));
@@ -352,7 +352,7 @@ class Processor {
 
   _createShortTermMeter () {
     return new LoudnessMeter({
-      name: 'short-term',
+      name: 'short_term',
       delegate: this,
       sampleRate: this.sampleRate,
       blockDuration: 3000,

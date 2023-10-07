@@ -5,6 +5,7 @@
   "author": "joel.lof@icloud.com",
   "license": "MIT",
   "scripts": {
+    "build": "bun build.ts",
     "serve": "bun bun-serve dist --hostname=localhost",
     "watch": "chokidar \"src/**/*\" \"public/**/*\" -c \"bun build.ts\""
   },
