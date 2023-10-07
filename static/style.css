@@ -1,4 +1,4 @@
-html, textarea {
+html {
   background-color: rgba(0, 0, 0, 70%);
   color: #fff;
   padding: 0;
@@ -7,12 +7,12 @@ html, textarea {
 
 body {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   height: 100vh;
   padding: 0;
   margin: 0;
-}
-
-textarea {
-  padding: 0.8rem;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  justify-content: center;
 }

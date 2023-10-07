@@ -1,13 +1,18 @@
 {
-  "name": "markdown-to-jira",
+  "name": "loudness-meter",
   "version": "0.0.1",
-  "description": "convert markdown to jira text",
+  "description": "Display the loudness units full scale (LUFS) of a sound file",
   "author": "joel.lof@icloud.com",
   "license": "MIT",
+  "scripts": {
+    "serve": "bun bun-serve dist --hostname=localhost",
+    "watch": "chokidar \"src/**/*\" \"public/**/*\" -c \"bun build.ts\""
+  },
   "devDependencies": {
-    "marked": "9.0.3",
+    "@types/web": "0.0.115",
     "bun-copy-plugin": "0.1.0",
     "bun-serve": "0.0.2",
-    "bun-types": "1.0.3"
+    "bun-types": "1.0.3",
+    "chokidar-cli": "3.0.0"
   }
 }

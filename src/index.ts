@@ -1,14 +1,35 @@
-import { convert } from './convert'
-declare const document: {
-  getElementById(id: string): {
-    value: string
-    addEventListener(event: string, fn: () => void): void
-  }
+import { LoudnessMeter } from './needles';
+
+const context = new AudioContext();
+const bufferPromise = load('music.mp4');
+const displays = {
+  momentary: document.getElementById('momentary'),
+  'short-term': document.getElementById('short_term'),
+  integrated: document.getElementById('integrated')
+} as const
+
+async function load(url: string): Promise<AudioBuffer> {
+  const response = await fetch(url);
+  const arrayBuffer = await response.arrayBuffer();
+  return await context.decodeAudioData(arrayBuffer);
 }
-declare const window: {
-  convert?: (markdown: string) => string
+
+async function start(): Promise<void> {
+  await context.resume();
+  const source = context.createBufferSource();
+  source.connect(context.destination);
+  const meter = new LoudnessMeter({
+    source,
+    modes: ['momentary', 'short-term', 'integrated'],
+    workerUri: 'needles-worker.js'
+  })
+  meter.on('dataavailable', (event) => {
+    displays[event.data.mode].textContent = String(event.data.value).slice(0, 5);
+  })
+  source.buffer = await bufferPromise;
+  meter.start();
+  source.start();
 }
-const input = document.getElementById('input')
-const output = document.getElementById('output')
-input.addEventListener('input', () => output.value = convert(input.value))
-window.convert = convert
+
+// start()
+window.addEventListener('click', start, { once: true });
