@@ -16,3 +16,20 @@ body {
   text-align: center;
   justify-content: center;
 }
+
+button {
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  color: white;
+  height: 200px;
+  width: 400px;
+}
+
+button:hover {
+  background-color: blue;
+}
