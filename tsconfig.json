@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["DOM", "ES2017"],
+    "lib": ["ES2017"],
     "types": [
       "bun-types",
-      "@types/web"
+      "@types/web",
+      "@types/audioworklet",
     ],
   },
 }
